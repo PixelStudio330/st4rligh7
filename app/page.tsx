@@ -80,7 +80,7 @@ export default function Dashboard() {
               className="flex items-center gap-3 cursor-default w-fit"
             >
               <span className="bg-[#90be6d] text-white px-4 py-1.5 rounded-lg font-[1000] text-base uppercase shadow-[4px_4px_0px_0px_#5a7d32] border-2 border-white/20">
-                Nyra Mehjabin
+                Nyra
               </span>
               <motion.span 
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
