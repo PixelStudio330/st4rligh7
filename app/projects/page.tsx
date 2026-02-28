@@ -54,7 +54,7 @@ export default function ProjectsPage() {
     {
       id: 2,
       title: "PixelStudio",
-      description: "Our official creative agency HQ. A collaboration with Nova Zaman (The respected CEO of PixelStudio) for building high-end, artsy digital solutions for global clients.",
+      description: "Our official creative agency HQ. A collaboration with Nova (The respected CEO of PixelStudio) for building high-end, artsy digital solutions for global clients.",
       tags: ["Next.js", "TypeScript", "Tailwind", "React", "Vercel"],
       link: "https://pixel-studio-opal.vercel.app/",
       accent: "#729d4d",

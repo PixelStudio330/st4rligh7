@@ -233,7 +233,7 @@ export default function Dashboard() {
               PixelStudio <Cherry className="text-[#ef476f]" />
             </h4>
             <p className="text-[15px] font-[1000] text-[#5d3d1e]/80 leading-relaxed mb-8">
-              My first website testing backend skills and deploying a full-stack project! Built with Nova Zaman.
+              My first website testing backend skills and deploying a full-stack project! Built with my fellow friend Nova!
             </p>
             <div className="flex flex-wrap gap-3">
               {["Next.js", "Tailwind", "React"].map(tag => (
