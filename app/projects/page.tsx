@@ -47,7 +47,7 @@ export default function ProjectsPage() {
       tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind"],
       link: "https://honey-haze.vercel.app/",
       accent: "#FFB347",
-      items: ["Strawberry Donut - $5.00", "Pudding Magic - $4.50"],
+      items: ["AI delivery man - Order tracking", "interactive cart - Visually stunning UI"],
       emoji: "🍯",
       type: "Personal Project"
     },
