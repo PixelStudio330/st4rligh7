@@ -106,7 +106,6 @@ export default function Dashboard() {
                <span>Site by <span className="underline decoration-[#90be6d] decoration-[3px] underline-offset-4">Nyra</span>!</span>
             </div>
 
-            {/* FIXED: Changed motion.p to motion.div to allow nested div background */}
             <motion.div 
               whileHover={{ y: -5 }}
               className="bg-[#fffdf5]/90 p-6 rounded-[2rem] border-[3px] border-[#90be6d]/40 shadow-xl italic text-[#3d5223] relative overflow-hidden group"
@@ -135,12 +134,17 @@ export default function Dashboard() {
             whileHover={{ scale: 1.05, rotate: 0 }}
             className="relative group w-full max-w-[280px] cursor-pointer"
           >
+            {/* Washi Tape Effect */}
             <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-10 bg-[#ffd166]/80 -rotate-3 z-30 shadow-sm mix-blend-multiply border-x-2 border-[#8b5a2b]/10" />
+            
+            {/* Decorative Shadow */}
             <div className="absolute inset-0 bg-[#8b5a2b] rounded-[3rem] translate-x-4 translate-y-4 opacity-20" />
+            
+            {/* Image Container */}
             <div className="relative aspect-square bg-[#fffdf5] border-[6px] border-[#8b5a2b] rounded-[3rem] overflow-hidden shadow-2xl">
               <img 
-                src="/img/hero1.jpg" 
-                alt="Hero Art" 
+                src="/img/id.png" 
+                alt="Nyra - Frontend Developer" 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
               />
               <motion.div 
