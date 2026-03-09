@@ -31,7 +31,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
-  
   const libraryRef = useRef<HTMLDivElement>(null);
 
   const currentTrack = tracks[trackIndex];
@@ -91,8 +90,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <style>{`
-          *, *::before, *::after, button, a, input {
+          /* Custom Cursor Logic - Ensure pointers are still 'active' */
+          *, *::before, *::after {
             cursor: none !important;
+          }
+          /* Allow system cursor on actual links if the custom one fails */
+          a, button, [role="button"] {
+            cursor: none !important;
+            pointer-events: auto !important;
           }
           .custom-scrollbar::-webkit-scrollbar { width: 4px; }
           .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
@@ -122,9 +127,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="relative z-10 flex flex-col w-full h-full">
             <Header />
 
-            <nav className="hidden md:flex bg-[#f2ead3] px-6 gap-1 pt-2 border-b-[3px] border-[#8b5a2b] shrink-0">
+            {/* NAV: Added z-50 and relative to ensure it's on top */}
+            <nav className="relative z-50 hidden md:flex bg-[#f2ead3] px-6 gap-1 pt-2 border-b-[3px] border-[#8b5a2b] shrink-0">
               {tabs.map((tab) => (
-                <Link key={tab.path} href={tab.path}>
+                <Link key={tab.path} href={tab.path} className="block">
                   <div className={`px-6 py-2 rounded-t-xl border-t-2 border-x-2 border-[#8b5a2b] transition-all text-xs font-bold flex items-center gap-3 ${
                     pathname === tab.path ? 'bg-[#fffdf5] -mb-[3px] z-10 text-[#5d3d1e]' : 'bg-[#e8dec0] opacity-70 hover:opacity-100 text-[#8b5a2b]'
                   }`}>
@@ -134,11 +140,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ))}
             </nav>
 
-            <div className="flex-1 min-h-[300px]">{children}</div>
+            <div className="flex-1 min-h-[300px] relative z-20">{children}</div>
             <Footer />
           </div>
         </motion.div>
 
+        {/* Music Player UI */}
         <div ref={libraryRef} className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3 scale-90 md:scale-100 origin-bottom-right">
           <audio 
             ref={audioRef} 
@@ -192,8 +199,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </AnimatePresence>
           
           <div className="bg-[#fffdf5] border-[3px] border-[#8b5a2b] rounded-2xl p-3 shadow-[6px_6px_0px_0px_#8b5a2b] flex items-center gap-4 relative">
-            
-            {/* ✨ ALIGNED ANIMATED TAG */}
             <AnimatePresence>
               {!showLibrary && (
                 <motion.div 
@@ -211,13 +216,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     rotate: { repeat: Infinity, duration: 4, ease: "easeInOut" }
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
-                  // Fixed position to align arrow tip with button
                   className="absolute -top-16 left-[-18px] flex flex-col items-center pointer-events-none z-30"
                 >
                   <div className="bg-[#ffd166] text-[#8b5a2b] text-[10px] font-black px-3 py-1.5 rounded-lg border-[3px] border-[#8b5a2b] shadow-sm whitespace-nowrap rotate-[-10deg]">
                     CLICK FOR PLAYLIST!
                   </div>
-                  {/* Arrow Tip aligned right above the button center */}
                   <div className="w-3 h-3 bg-[#ffd166] border-r-[3px] border-b-[3px] border-[#8b5a2b] rotate-45 -mt-1 mr-1" />
                 </motion.div>
               )}
