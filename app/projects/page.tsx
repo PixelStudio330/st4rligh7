@@ -2,7 +2,16 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion'; 
-import { ExternalLink, Star, Heart, MousePointer2, Sparkles, Users, PawPrint } from 'lucide-react';
+import { 
+  ExternalLink, 
+  Star, 
+  Heart, 
+  MousePointer2, 
+  Sparkles, 
+  Users, 
+  PawPrint, 
+  ChefHat 
+} from 'lucide-react';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -39,6 +48,17 @@ const tagVariants: Variants = {
 
 export default function ProjectsPage() {
   const projects = [
+    {
+      id: 4,
+      title: "The Dum Pot",
+      description: "A premium Biryani delivery experience. Featuring a complex state-managed ordering system, persistent cart logic, and a slow-cooked aesthetic.",
+      tags: ["Next.js", "Framer Motion", "Tailwind", "Lucide"],
+      link: "https://the-dum-pot.vercel.app/",
+      accent: "#FF9933",
+      items: ["Smart Order Blocker - Live State", "Dynamic Menu - Interactive", "Persistent Feast - Cart Logic"],
+      emoji: "🍲",
+      type: "E-commerce Experience"
+    },
     {
       id: 1,
       title: "Honey Haze",
@@ -112,7 +132,7 @@ export default function ProjectsPage() {
             
             <div className="relative bg-white border-[4px] border-[#8b5a2b] rounded-[2.5rem] p-7 shadow-md overflow-hidden h-full flex flex-col">
               
-              {/* LIVE FEED PREVIEW (Centered fix + Glass Shine) */}
+              {/* LIVE FEED PREVIEW */}
               <motion.a 
                 href={project.link} 
                 target="_blank" 
@@ -128,7 +148,7 @@ export default function ProjectsPage() {
                   loading="lazy"
                 />
                 
-                {/* Overlay Shimmer (Glass Shine Effect) */}
+                {/* Overlay Shimmer */}
                 <motion.div 
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
@@ -151,7 +171,7 @@ export default function ProjectsPage() {
                   className="text-white px-4 py-1.5 rounded-full text-[10px] font-black border-[2.5px] border-[#8b5a2b] -rotate-1 shadow-md uppercase flex items-center gap-2"
                   style={{ backgroundColor: project.accent }}
                 >
-                  {project.id === 3 ? <Users size={12} /> : project.id === 2 ? <PawPrint size={12} /> : <Sparkles size={12} />}
+                  {project.id === 3 ? <Users size={12} /> : project.id === 2 ? <PawPrint size={12} /> : project.id === 4 ? <ChefHat size={12} /> : <Sparkles size={12} />}
                   {project.type}
                 </motion.div>
                 <motion.div
