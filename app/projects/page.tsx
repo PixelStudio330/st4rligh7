@@ -1,10 +1,9 @@
 "use client";
 
 import React from 'react';
-import { motion, Variants } from 'framer-motion'; // Added Variants type
-import { ExternalLink, Star, Heart, MousePointer2, Sparkles, Users } from 'lucide-react';
+import { motion, Variants } from 'framer-motion'; 
+import { ExternalLink, Star, Heart, MousePointer2, Sparkles, Users, PawPrint } from 'lucide-react';
 
-// Explicitly typing the variants fixes the "string is not assignable to type spring" error
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -22,7 +21,7 @@ const cardVariants: Variants = {
     y: 0, 
     scale: 1,
     transition: { 
-      type: "spring", // TypeScript now knows this is a valid animation type
+      type: "spring", 
       stiffness: 100, 
       damping: 15 
     }
@@ -47,14 +46,25 @@ export default function ProjectsPage() {
       tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind"],
       link: "https://honey-haze.vercel.app/",
       accent: "#FFB347",
-      items: ["AI delivery man - Order tracking", "interactive cart - Visually stunning UI"],
+      items: ["AI delivery man - Order tracker", "Interactive cart - Stunning UI"],
       emoji: "🍯",
-      type: "Personal Project"
+      type: "Experimental Full-Stack Project"
     },
     {
       id: 2,
+      title: "Pawsky Wawsky",
+      description: "A documentary-style pet sanctuary template designed for emotional storytelling. Features high-end performance with a scrapbook aesthetic.",
+      tags: ["Next.js", "TypeScript", "Framer Motion", "Tailwind"],
+      link: "https://pawsky-wawsky.vercel.app/",
+      accent: "#76A8D6",
+      items: ["Pet Profiles - Live Demo", "Modern Architecture - Optimized"],
+      emoji: "🐾",
+      type: "Pet Shop Template"
+    },
+    {
+      id: 3,
       title: "PixelStudio",
-      description: "Our official creative agency HQ. A collaboration with Nova (The respected CEO of PixelStudio) for building high-end, artsy digital solutions for global clients.",
+      description: "Our official creative agency HQ. A collaboration with Nova for building high-end, artsy digital solutions for global clients.",
       tags: ["Next.js", "TypeScript", "Tailwind", "React", "Vercel"],
       link: "https://pixel-studio-opal.vercel.app/",
       accent: "#729d4d",
@@ -102,7 +112,7 @@ export default function ProjectsPage() {
             
             <div className="relative bg-white border-[4px] border-[#8b5a2b] rounded-[2.5rem] p-7 shadow-md overflow-hidden h-full flex flex-col">
               
-              {/* LIVE FEED PREVIEW */}
+              {/* LIVE FEED PREVIEW (Centered fix + Glass Shine) */}
               <motion.a 
                 href={project.link} 
                 target="_blank" 
@@ -114,15 +124,15 @@ export default function ProjectsPage() {
                 <iframe 
                   src={project.link} 
                   title={`${project.title} Live Preview`}
-                  className="absolute top-0 left-0 w-[1280px] h-[720px] origin-top-left scale-[0.25] md:scale-[0.3] border-none pointer-events-none transition-opacity duration-500 group-hover/iframe:opacity-80"
+                  className="absolute top-0 left-1/2 -translate-x-1/2 w-[1280px] h-[720px] origin-top scale-[0.25] md:scale-[0.3] border-none pointer-events-none transition-opacity duration-500 group-hover/iframe:opacity-80"
                   loading="lazy"
                 />
                 
-                {/* Overlay Shimmer */}
+                {/* Overlay Shimmer (Glass Shine Effect) */}
                 <motion.div 
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none skew-x-12"
                 />
 
                 <div 
@@ -141,7 +151,7 @@ export default function ProjectsPage() {
                   className="text-white px-4 py-1.5 rounded-full text-[10px] font-black border-[2.5px] border-[#8b5a2b] -rotate-1 shadow-md uppercase flex items-center gap-2"
                   style={{ backgroundColor: project.accent }}
                 >
-                  {project.id === 2 ? <Users size={12} /> : <Sparkles size={12} />}
+                  {project.id === 3 ? <Users size={12} /> : project.id === 2 ? <PawPrint size={12} /> : <Sparkles size={12} />}
                   {project.type}
                 </motion.div>
                 <motion.div
