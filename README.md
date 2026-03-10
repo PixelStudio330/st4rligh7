@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✨ St4rLigh7 | Creative Frontend Developer Portfolio
 
-## Getting Started
+Welcome to my digital corner of the internet. This is a high-performance, immersive portfolio designed to showcase the intersection of code, art, and storytelling.
 
-First, run the development server:
+> [!TIP]
+> **Status:** Live & Active. This portfolio is the central hub for all my projects, including Pixel Code Studio and my specialized web templates.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🔗 Explore the Universe
+* **Live Site:** [st4rligh7.vercel.app](https://st4rligh7.vercel.app/)
+* **Fiverr:** [Hire me for your next project](https://www.fiverr.com/s/XLyy4b2)
+* **Email:** `pixelstudioo003@gmail.com`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🛠️ The Tech Behind the Magic
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I specialize in building "Cozy-Tech" experiences—websites that feel warm and artistic but run on cutting-edge, industrial-grade code.
 
-## Learn More
+![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Current Dimensions (Live Projects)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Explore the different worlds I've built. Each one is a unique study in UI/UX and performance.
 
-## Deploy on Vercel
+* **🐾 Pawsky Wawsky** | *Documentary-Style Pet Sanctuary*
+  * [View Live Site](https://pawsky-wawsky.vercel.app/)
+* **🍯 Honey Haze** | *Cozy Cafe Business Experience*
+  * [View Live Site](https://honey-haze.vercel.app/)
+* **💎 Pixel Code Studio** | *Official Studio Collaboration*
+  * [View Live Site](https://pixel-studio-opal.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 🎨 What I Do
+
+* **Bespoke UI/UX:** Moving away from "Generic Bootstrap" and into unique, character-driven designs.
+* **Fluid Motion:** Using Framer Motion to create interfaces that breathe and react.
+* **Visual Storytelling:** Integrating my background in digital art into functional web layouts.
+
+---
+
+## 💼 Collaboration & Inquiries
+
+I am currently open for freelance opportunities and creative collaborations. Whether you need a high-end business template or a completely unique personal brand, let's turn your vision into pixels.
+
+* **Fiverr:** [Order a Custom Build](https://www.fiverr.com/s/XLyy4b2)
+* **Portfolio:** [st4rligh7.vercel.app](https://st4rligh7.vercel.app/)
+
+---
+
+© 2026 St4rLigh7 | Built with art 🎨.
