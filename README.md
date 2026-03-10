@@ -3,7 +3,7 @@
 Welcome to my digital corner of the internet. This is a high-performance, immersive portfolio designed to showcase the intersection of code, art, and storytelling.
 
 > [!TIP]
-> **Status:** Live & Active. This portfolio is the central hub for all my projects, including Pixel Code Studio and my specialized web templates.
+> **Status:** Live & Active. This portfolio is the central hub for all my projects, including Pixel Studio and my specialized web templates.
 
 ### 🔗 Explore the Universe
 * **Live Site:** [st4rligh7.vercel.app](https://st4rligh7.vercel.app/)
@@ -49,7 +49,7 @@ Explore the different worlds I've built. Each one is a unique study in UI/UX and
 
 ## 💼 Collaboration & Inquiries
 
-I am currently open for freelance opportunities and creative collaborations. Whether you need a coorporative high-end business template or a completely unique personal brand, let's turn your vision into pixels.
+I am currently open for freelance opportunities and creative collaborations. Whether you need a corporative high-end business template or a completely unique personal brand, let's turn your vision into pixels.
 
 * **Fiverr:** [Order a Custom Build](https://www.fiverr.com/s/XLyy4b2)
 * **Portfolio:** [st4rligh7.vercel.app](https://st4rligh7.vercel.app/)
