@@ -210,95 +210,89 @@ export default function Dashboard() {
         </motion.div>
       </div>
 
-      {/* PROJECT PREVIEW SECTION */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center pt-6 md:pt-8">
-        {/* LIVE IFRAME CARD */}
-<motion.a
-  href="https://pixel-studio-opal.vercel.app/"
-  target="_blank"
-  rel="noopener noreferrer"
-  whileHover={{ y: -10, scale: 1.01 }}
-  className="md:col-span-7 relative block group"
->
-  <div className="absolute inset-0 bg-[#8b5a2b] rounded-[3rem] translate-x-4 translate-y-4 opacity-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-all" />
-  <div className="relative aspect-[4/3] sm:aspect-[16/10] bg-white border-[5px] border-[#8b5a2b] rounded-[3rem] p-4 sm:p-5 shadow-2xl overflow-hidden">
-    <div className="w-full h-full bg-[#fdfcf0] rounded-[2rem] border-[4px] border-[#90be6d] border-dashed overflow-hidden relative group-hover:border-solid transition-all">
-      <iframe
-        src="https://pixel-studio-opal.vercel.app/"
-        className="w-[200%] h-[200%] origin-top-left scale-[0.5] border-none pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity"
-      />
-      
-      {/* COMPACT RUSTY PINK & SKY BLUE BUTTON */}
-      <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 bg-[#e29494] text-white text-[10px] sm:text-[12px] px-4 py-2 sm:px-8 sm:py-4 rounded-2xl sm:rounded-3xl font-[1000] border-[3px] sm:border-[4px] border-[#cae6ff] uppercase italic tracking-wider shadow-[0_4px_0_0_#94c7f2] sm:shadow-[0_6px_0_0_#94c7f2] flex items-center gap-2 cursor-pointer z-20 transition-all active:translate-y-1 active:shadow-none">
-        Visit Studio <ExternalLink size={12} className="sm:w-[14px] sm:h-[14px]" />
+   {/* PROJECT PREVIEW SECTION */}
+<motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center pt-6 md:pt-8">
+  {/* LIVE IFRAME CARD */}
+  <motion.a
+    href="https://pixel-studio-opal.vercel.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ y: -10, scale: 1.01 }}
+    className="md:col-span-7 relative block group"
+  >
+    <div className="absolute inset-0 bg-[#8b5a2b] rounded-[3rem] translate-x-4 translate-y-4 opacity-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-all" />
+    <div className="relative aspect-[4/3] sm:aspect-[16/10] bg-white border-[5px] border-[#8b5a2b] rounded-[3rem] p-4 sm:p-5 shadow-2xl overflow-hidden">
+      <div className="w-full h-full bg-[#fdfcf0] rounded-[2rem] border-[4px] border-[#90be6d] border-dashed overflow-hidden relative group-hover:border-solid transition-all">
+        <iframe
+          src="https://pixel-studio-opal.vercel.app/"
+          className="w-[200%] h-[200%] origin-top-left scale-[0.5] border-none pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity"
+        />
+        
+        {/* COMPACT DEEP RUSTY PINK BUTTON */}
+        <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 bg-[#e29494] text-white text-[10px] sm:text-[12px] px-4 py-2 sm:px-8 sm:py-4 rounded-2xl sm:rounded-3xl font-[1000] border-[3px] sm:border-[4px] border-[#a65d5d] uppercase italic tracking-wider shadow-[0_4px_0_0_#a65d5d] sm:shadow-[0_6px_0_0_#a65d5d] flex items-center gap-2 cursor-pointer z-20 transition-all active:translate-y-1 active:shadow-none">
+          Visit Studio <ExternalLink size={12} className="sm:w-[14px] sm:h-[14px]" />
+        </div>
       </div>
     </div>
-  </div>
-</motion.a>
+  </motion.a>
 
-        {/* PROJECT INFO + POLISHED BUTTON */}
-        <motion.div variants={floating} initial="initial" animate="animate" className="md:col-span-5">
-          <motion.div
-            whileHover={{ rotate: 0, scale: 1.02 }}
-            className="bg-[#fffdf5] border-[5px] border-[#8b5a2b] p-6 sm:p-8 md:p-10 rounded-[3rem] shadow-[12px_12px_0px_0px_#8b5a2b] -rotate-2 relative overflow-hidden flex flex-col gap-6"
-          >
-            <div className="absolute top-0 right-0 w-20 h-20 bg-[#90be6d]/10 rounded-bl-full" />
-            
-            <div>
-              <h4 className="text-2xl sm:text-3xl font-[1000] text-[#5d3d1e] uppercase mb-5 italic flex items-center gap-3">
-                PixelStudio <Cherry className="text-[#ef476f]" />
-              </h4>
-              <p className="text-sm sm:text-[15px] font-[1000] text-[#5d3d1e]/80 leading-relaxed">
-                My first website testing backend skills and deploying a full-stack
-                project! Built with my fellow friend Nova!
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              {["Next.js", "Tailwind", "React"].map((tag) => (
-                <motion.span
-                  key={tag}
-                  whileHover={{ y: -3, backgroundColor: "#90be6d", color: "#fff" }}
-                  className="text-[10px] font-black text-[#5a7d32] bg-[#90be6d]/20 px-4 py-2 rounded-xl border-2 border-[#90be6d]/40 cursor-default transition-all"
-                >
-                  #{tag.toUpperCase()}
-                </motion.span>
-              ))}
-            </div>
-
-         {/* RUSTY PINK & SKY BLUE VIEW MORE PROJECTS BUTTON */}
-<motion.a
-  href="/projects"
-  variants={wobbleHover}
-  whileHover="hover"
-  whileTap="tap"
-  className="relative flex items-center justify-center gap-3 w-full bg-[#e29494] text-white py-3 rounded-[1.2rem] font-[1000] border-[4px] border-[#cae6ff] uppercase italic tracking-[0.15em] overflow-hidden group/btn transition-all duration-300 shadow-[0_6px_0_0_#94c7f2] hover:shadow-[0_2px_0_0_#94c7f2] hover:translate-y-[4px]"
->
-  {/* Glossy Overlay Shine */}
-  <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 pointer-events-none">
-    <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover/btn:left-[200%] transition-all duration-1000 ease-in-out" />
-  </div>
-
-  {/* Button Content - Perfectly Centered */}
-  <span className="relative z-10 flex items-center justify-center gap-2 text-center text-[13px] sm:text-sm drop-shadow-[1px_1px_1px_rgba(0,0,0,0.1)]">
-    View More Projects? 
+  {/* PROJECT INFO + POLISHED BUTTON */}
+  <motion.div variants={floating} initial="initial" animate="animate" className="md:col-span-5">
     <motion.div
-      animate={{ 
-        rotate: [0, 20, -20, 0],
-        scale: [1, 1.2, 1] 
-      }}
-      transition={{ repeat: Infinity, duration: 2.5 }}
+      whileHover={{ rotate: 0, scale: 1.02 }}
+      className="bg-[#fffdf5] border-[5px] border-[#8b5a2b] p-6 sm:p-8 md:p-10 rounded-[3rem] shadow-[12px_12px_0px_0px_#8b5a2b] -rotate-2 relative overflow-hidden flex flex-col gap-6"
     >
-      <Sparkles size={18} className="text-[#cae6ff]" fill="currentColor" />
-    </motion.div>
-  </span>
+      <div className="absolute top-0 right-0 w-20 h-20 bg-[#90be6d]/10 rounded-bl-full" />
+      
+      <div>
+        <h4 className="text-2xl sm:text-3xl font-[1000] text-[#5d3d1e] uppercase mb-5 italic flex items-center gap-3">
+          PixelStudio <Cherry className="text-[#ef476f]" />
+        </h4>
+        <p className="text-sm sm:text-[15px] font-[1000] text-[#5d3d1e]/80 leading-relaxed">
+          My first website testing backend skills and deploying a full-stack
+          project! Built with my fellow friend Nova!
+        </p>
+      </div>
 
-  {/* Internal Glow */}
-  <div className="absolute inset-[2px] rounded-[1rem] border border-white/20 pointer-events-none z-0" />
-</motion.a>
+      <div className="flex flex-wrap gap-3">
+        {["Next.js", "Tailwind", "React"].map((tag) => (
+          <motion.span
+            key={tag}
+            whileHover={{ y: -3, backgroundColor: "#90be6d", color: "#fff" }}
+            className="text-[10px] font-black text-[#5a7d32] bg-[#90be6d]/20 px-4 py-2 rounded-xl border-2 border-[#90be6d]/40 cursor-default transition-all"
+          >
+            #{tag.toUpperCase()}
+          </motion.span>
+        ))}
+      </div>
+
+      {/* RUSTY PINK ON RUSTY PINK BUTTON */}
+      <motion.a
+        href="/projects"
+        variants={wobbleHover}
+        whileHover="hover"
+        whileTap="tap"
+        className="relative flex items-center justify-center gap-3 w-full bg-[#e29494] text-white py-3 rounded-[1.2rem] font-[1000] border-[4px] border-[#f4c2c2] uppercase italic tracking-[0.15em] overflow-hidden group/btn transition-all duration-300 shadow-[0_6px_0_0_#a65d5d] hover:shadow-[0_2px_0_0_#a65d5d] hover:translate-y-[4px]"
+      >
+        <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 pointer-events-none">
+          <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover/btn:left-[200%] transition-all duration-1000 ease-in-out" />
+        </div>
+
+        <span className="relative z-10 flex items-center justify-center gap-2 text-center text-[13px] sm:text-sm drop-shadow-[1px_1px_1px_rgba(0,0,0,0.1)]">
+          View More Projects? 
+          <motion.div
+            animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 1] }}
+            transition={{ repeat: Infinity, duration: 2.5 }}
+          >
+            <Sparkles size={18} className="text-[#f4c2c2]" fill="currentColor" />
           </motion.div>
-        </motion.div>
-      </motion.div>
+        </span>
+
+        <div className="absolute inset-[2px] rounded-[1rem] border border-white/20 pointer-events-none z-0" />
+      </motion.a>
     </motion.div>
+  </motion.div>
+</motion.div>
+</motion.div>
   );
 }
