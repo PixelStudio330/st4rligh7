@@ -31,7 +31,7 @@ Explore the different worlds I've built. Each one is a unique study in UI/UX and
   * [View Live Site](https://pawsky-wawsky.vercel.app/)
 * **🍯 Honey Haze** | *Cozy Cafe Business Experience*
   * [View Live Site](https://honey-haze.vercel.app/)
-* **💎 Pixel Code Studio** | *Official Studio Collaboration*
+* **💎 Pixel Studio** | *Official Studio*
   * [View Live Site](https://pixel-studio-opal.vercel.app/)
 
 ---
@@ -47,7 +47,7 @@ Explore the different worlds I've built. Each one is a unique study in UI/UX and
 
 ## 💼 Collaboration & Inquiries
 
-I am currently open for freelance opportunities and creative collaborations. Whether you need a high-end business template or a completely unique personal brand, let's turn your vision into pixels.
+I am currently open for freelance opportunities and creative collaborations. Whether you need a coorporative high-end business template or a completely unique personal brand, let's turn your vision into pixels.
 
 * **Fiverr:** [Order a Custom Build](https://www.fiverr.com/s/XLyy4b2)
 * **Portfolio:** [st4rligh7.vercel.app](https://st4rligh7.vercel.app/)
