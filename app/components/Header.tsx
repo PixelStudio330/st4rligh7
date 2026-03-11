@@ -11,8 +11,8 @@ export default function Header() {
 
   const tabs = [
     { name: 'Dashboard', path: '/' },
-    { name: 'More Projects', path: '/projects' },
-    { name: 'Contact Me', path: '/contact' },
+    { name: 'Projects', path: '/projects' }, // Shortened for cleaner desktop look
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -39,7 +39,26 @@ export default function Header() {
         </div>
 
         <div className="flex gap-2 items-center">
-          {/* Mobile Hamburger Button - Now more visible */}
+          {/* Desktop Navigation - ADDED THIS PART */}
+          <nav className="hidden md:flex items-center gap-2 mr-4">
+            {tabs.map((tab) => (
+              <Link key={tab.path} href={tab.path}>
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
+                  className={`px-3 py-1 rounded-lg text-[10px] font-[1000] uppercase border-2 transition-all ${
+                    pathname === tab.path
+                      ? 'bg-[#90be6d] text-white border-[#5a7d32] shadow-[2px_2px_0px_0px_#5a7d32]'
+                      : 'bg-white/40 text-[#8b5a2b] border-transparent hover:border-[#8b5a2b]/20'
+                  }`}
+                >
+                  {tab.name}
+                </motion.div>
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Hamburger Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden w-10 h-10 rounded-xl bg-[#fffdf5] border-[3px] border-[#8b5a2b] flex items-center justify-center text-[#c45a5a] shadow-[3px_3px_0px_0px_#8b5a2b] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
@@ -47,7 +66,7 @@ export default function Header() {
             {isOpen ? <X size={20} strokeWidth={3} /> : <Menu size={20} strokeWidth={3} />}
           </button>
 
-          {/* Window Controls (Hidden on tiny screens) */}
+          {/* Window Controls */}
           <div className="hidden sm:flex gap-2">
             <div className="w-7 h-7 rounded-lg bg-white/40 border-2 border-white/60 flex items-center justify-center text-[#CF7486] text-xs font-bold">-</div>
             <div className="w-7 h-7 rounded-lg bg-white/40 border-2 border-white/60 flex items-center justify-center text-[#CF7486] text-xs font-bold">□</div>
