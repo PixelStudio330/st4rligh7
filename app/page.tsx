@@ -131,9 +131,7 @@ export default function Dashboard() {
             >
               <div className="absolute inset-0 bg-[#90be6d]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <p className="relative z-10">
-                I’m a 14-year-old front-end developer based in Bangladesh. I
-                love adding artsy touch to my projects and exploring new design
-                trends.
+                I am a Bangladesh-based Frontend Developer specializing in transforming complex Figma designs into high-performance, responsive web experiences. I bridge the gap between creative folk-art aesthetics and modern technical standards, ensuring every project is as functional as it is visually unique.
               </p>
               <motion.div
                 animate={{ rotate: [0, 15, 0] }}
