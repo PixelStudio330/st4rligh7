@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Send, Mail, Heart, MessageSquare, User, Sparkles, Smartphone, Navigation, CheckCircle2, Instagram } from 'lucide-react';
+import { Send, Mail, Heart, MessageSquare, User, Sparkles, Smartphone, Navigation, CheckCircle2, Instagram, Image as ImageIcon, X } from 'lucide-react';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -39,6 +39,23 @@ const stickerHoverVariants: Variants = {
 
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [attachedFile, setAttachedFile] = useState<{ name: string; base64: string } | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Convert image to base64 for API transmission and preview
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAttachedFile({
+          name: file.name,
+          base64: reader.result as string
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -49,10 +66,10 @@ export default function ContactPage() {
       name: formData.get('name'),
       email: formData.get('email'),
       message: formData.get('message'),
+      attachment: attachedFile?.base64 || null,
     };
 
     try {
-      // Small artificial delay for the "Sealing Envelope" animation vibe
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       const response = await fetch('/api/send', {
@@ -63,6 +80,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         setStatus('success');
+        setAttachedFile(null); 
       } else {
         setStatus('error');
       }
@@ -105,7 +123,7 @@ export default function ContactPage() {
           <AnimatePresence mode="wait">
             {status !== 'success' ? (
               <motion.form 
-                key="contact-form" // Fixed: Static key for the form group
+                key="contact-form"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, transition: { duration: 0.2 } }}
@@ -135,6 +153,60 @@ export default function ContactPage() {
                      </label>
                      <textarea name="message" required rows={4} placeholder="THE MESSAGE..." className="w-full bg-[#fdfcf0] border-[3px] border-[#8b5a2b] rounded-[2rem] px-5 py-4 font-black text-[#5d3d1e] outline-none placeholder:text-[#8b5a2b]/30 resize-none focus:ring-4 ring-[#90be6d]/20 transition-all" />
                    </div>
+
+                   <div className="space-y-2">
+                     <label className="flex items-center gap-2 text-xs font-[1000] text-[#5d3d1e] uppercase ml-2">
+                       <ImageIcon size={14} /> Attach Reference
+                     </label>
+                     
+                     <div className="flex flex-wrap items-end gap-4">
+                        <button 
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="bg-[#f2ead3] border-[3px] border-[#8b5a2b] rounded-xl px-4 py-2 font-black text-[10px] text-[#5d3d1e] uppercase shadow-[0_3px_0px_0px_#8b5a2b] active:shadow-none active:translate-y-[2px] transition-all flex items-center gap-2 h-fit"
+                        >
+                          {attachedFile ? "Change Image" : "Choose File"}
+                        </button>
+                        
+                        <input 
+                          type="file" 
+                          ref={fileInputRef} 
+                          onChange={handleFileChange} 
+                          accept="image/*" 
+                          className="hidden" 
+                        />
+
+                        {/* PREVIEW THUMBNAIL */}
+                        <AnimatePresence>
+                          {attachedFile && (
+                            <motion.div 
+                              initial={{ scale: 0, rotate: -10 }}
+                              animate={{ scale: 1, rotate: 2 }}
+                              exit={{ scale: 0, opacity: 0 }}
+                              className="relative group h-24 w-24 bg-white border-[3px] border-[#8b5a2b] p-1.5 shadow-md rounded-sm"
+                            >
+                              <img 
+                                src={attachedFile.base64} 
+                                alt="Preview" 
+                                className="w-full h-full object-cover rounded-sm grayscale-[20%] group-hover:grayscale-0 transition-all"
+                              />
+                              <button 
+                                type="button"
+                                onClick={() => setAttachedFile(null)}
+                                className="absolute -top-3 -right-3 bg-[#ef476f] text-white rounded-full p-1 border-2 border-[#8b5a2b] shadow-sm hover:scale-110 transition-transform"
+                              >
+                                <X size={12} strokeWidth={4} />
+                              </button>
+                              <div className="absolute -bottom-1 left-0 right-0 text-center">
+                                <span className="text-[6px] font-black text-[#8b5a2b] uppercase bg-white px-1 truncate block">
+                                  {attachedFile.name}
+                                </span>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                     </div>
+                   </div>
                 </div>
 
                 <motion.button 
@@ -158,7 +230,7 @@ export default function ContactPage() {
               </motion.form>
             ) : (
               <motion.div 
-                key="success-screen" // Fixed: Unique key for success screen
+                key="success-screen"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ opacity: 0 }}

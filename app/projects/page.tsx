@@ -47,7 +47,26 @@ const tagVariants: Variants = {
 };
 
 export default function ProjectsPage() {
+  /**
+   * HOW TO ADD A NEW PROJECT:
+   * 1. Add a new object {} to the 'projects' array below.
+   * 2. 'id': Ensure it's unique.
+   * 3. 'items': Use the "Title - Status" format. The code splits them at the " - " 
+   * to style the right side (Status) with a red border and the left side (Title) with a dot.
+   * 4. 'accent': Choose a hex color that matches the project's branding.
+   */
   const projects = [
+    {
+      id: 5,
+      title: "Chirp Heavens",
+      description: "A professional bird shop template featuring a corporate-clean aesthetic. Built for high-conversion with a sophisticated product algorithm.",
+      tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+      link: "https://chirp-heaven.vercel.app/",
+      accent: "#4A90E2", // Sky Blue accent
+      items: ["Bird Discovery - Product Algorithm", "Order Logistics - Live Tracking", "Functional Nest - Smart Cart"],
+      emoji: "🐦",
+      type: "Bird Shop Template"
+    },
     {
       id: 4,
       title: "The Dum Pot",
@@ -171,7 +190,8 @@ export default function ProjectsPage() {
                   className="text-white px-4 py-1.5 rounded-full text-[10px] font-black border-[2.5px] border-[#8b5a2b] -rotate-1 shadow-md uppercase flex items-center gap-2"
                   style={{ backgroundColor: project.accent }}
                 >
-                  {project.id === 3 ? <Users size={12} /> : project.id === 2 ? <PawPrint size={12} /> : project.id === 4 ? <ChefHat size={12} /> : <Sparkles size={12} />}
+                  {/* Dynamic Icon selection based on ID or Type */}
+                  {project.id === 3 ? <Users size={12} /> : (project.id === 2 || project.id === 5) ? <PawPrint size={12} /> : project.id === 4 ? <ChefHat size={12} /> : <Sparkles size={12} />}
                   {project.type}
                 </motion.div>
                 <motion.div
