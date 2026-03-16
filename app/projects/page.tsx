@@ -274,7 +274,7 @@ export default function ProjectsPage() {
           transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
           className="bg-[#f2ead3] px-10 py-4 rounded-2xl border-[3px] border-[#8b5a2b] text-sm font-[1000] text-[#8b5a2b] uppercase tracking-[0.3em] shadow-xl rotate-1"
         >
-          🌸 All Systems Operational 🌸
+          🌸 More coming soon~ 🌸
         </motion.div>
       </motion.div>
     </motion.div>

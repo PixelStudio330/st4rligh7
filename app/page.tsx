@@ -59,7 +59,8 @@ export default function Dashboard() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="px-4 sm:px-6 md:px-10 py-8 md:py-10 space-y-12 md:space-y-16 max-w-7xl mx-auto relative overflow-hidden"
+      /* REDUCED SPACE-Y HERE */
+      className="px-4 sm:px-6 md:px-10 py-8 md:py-10 space-y-6 md:space-y-8 max-w-7xl mx-auto relative overflow-hidden"
     >
       {/* Background Elements */}
       <motion.div
@@ -131,7 +132,7 @@ export default function Dashboard() {
             >
               <div className="absolute inset-0 bg-[#90be6d]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <p className="relative z-10">
-                I am a Bangladesh-based Frontend Developer specializing in transforming complex Figma designs into high-performance, responsive web experiences. I bridge the gap between creative folk-art aesthetics and modern technical standards, ensuring every project is as functional as it is visually unique.
+                I am a Bangladesh-based Frontend Developer specializing in transforming complex Figma designs into high-performance, responsive web experiences. I bridge the gap between creative folk-art aesthetics and modern technical standards.
               </p>
               <motion.div
                 animate={{ rotate: [0, 15, 0] }}
@@ -182,6 +183,7 @@ export default function Dashboard() {
 
           <ul className="space-y-6 px-2 sm:px-4">
             {[
+              { icon: <Cloud size={24} />, label: "Fiverr", color: "#90be6d", url: "https://www.fiverr.com/s/WER7D77" },
               { icon: <Apple size={24} />, label: "GitHub", color: "#c45a5a", url: "https://github.com/PixelStudio330" },
               { icon: <Cherry size={24} />, label: "PixelStudio", color: "#ef476f", url: "https://pixel-studio-opal.vercel.app/" },
               { icon: <Heart size={24} />, label: "Instagram", color: "#ff6b6b", url: "https://www.instagram.com/certi.fried_dora/" },
@@ -209,8 +211,8 @@ export default function Dashboard() {
         </motion.div>
       </div>
 
-      {/* PROJECT PREVIEW SECTION */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center pt-6 md:pt-8">
+      {/* PROJECT PREVIEW SECTION - REDUCED PT-2 */}
+      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center pt-2">
         {/* LIVE IFRAME CARD */}
         <motion.a
           href="https://pixel-studio-opal.vercel.app/"
@@ -263,7 +265,6 @@ export default function Dashboard() {
               ))}
             </div>
 
-            {/* UPDATED: Cleaned up Link syntax - no more error! */}
             <Link 
               href="/projects" 
               className="relative flex items-center justify-center gap-3 w-full"
@@ -284,7 +285,7 @@ export default function Dashboard() {
                     animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 1] }}
                     transition={{ repeat: Infinity, duration: 2.5 }}
                   >
-                    <Sparkles size={18} className="text-[#f4c2c2]" fill="currentColor" />
+                    < Sparkles size={18} className="text-[#f4c2c2]" fill="currentColor" />
                   </motion.div>
                 </span>
 

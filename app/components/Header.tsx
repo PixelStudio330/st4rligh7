@@ -11,8 +11,9 @@ export default function Header() {
 
   const tabs = [
     { name: 'Dashboard', path: '/' },
-    { name: 'Projects', path: '/projects' }, // Shortened for cleaner desktop look
+    { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Skills', path: '/skills' },
   ];
 
   return (
@@ -39,25 +40,6 @@ export default function Header() {
         </div>
 
         <div className="flex gap-2 items-center">
-          {/* Desktop Navigation - ADDED THIS PART */}
-          <nav className="hidden md:flex items-center gap-2 mr-4">
-            {tabs.map((tab) => (
-              <Link key={tab.path} href={tab.path}>
-                <motion.div
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
-                  className={`px-3 py-1 rounded-lg text-[10px] font-[1000] uppercase border-2 transition-all ${
-                    pathname === tab.path
-                      ? 'bg-[#90be6d] text-white border-[#5a7d32] shadow-[2px_2px_0px_0px_#5a7d32]'
-                      : 'bg-white/40 text-[#8b5a2b] border-transparent hover:border-[#8b5a2b]/20'
-                  }`}
-                >
-                  {tab.name}
-                </motion.div>
-              </Link>
-            ))}
-          </nav>
-
           {/* Mobile Hamburger Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)}

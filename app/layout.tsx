@@ -1,13 +1,14 @@
 "use client";
 import "./globals.css";
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SparkleTrail from './components/SparkleTrail'; 
 import { X, Music, Play, Pause, SkipForward, SkipBack, Disc, ListMusic, Volume2, Heart } from 'lucide-react';
+import Lenis from 'lenis';
 
 const tracks = [
   { id: 1, title: "Touch", artist: "KATSEYE", src: "/musics/touch.mp4" },
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     { name: 'Dashboard', path: '/' },
     { name: 'More Projects', path: '/projects' },
     { name: 'Contact Me', path: '/contact' },
+    { name: 'Skill Archieve', path: '/skills' },
   ];
 
   const [trackIndex, setTrackIndex] = useState(0);
@@ -34,6 +36,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const libraryRef = useRef<HTMLDivElement>(null);
 
   const currentTrack = tracks[trackIndex];
+
+  // --- MAC-STYLE SMOOTH SCROLL (LENIS) ---
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // --- SCROLL ANIMATION LOGIC ---
+  const { scrollYProgress } = useScroll();
+  const smoothY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  // Subtle vertical "wave" shift for the main card
+  const waveEffect = useTransform(smoothY, [0, 1], [0, -20]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -90,18 +123,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <style>{`
-          /* Custom Cursor Logic - Ensure pointers are still 'active' */
-          *, *::before, *::after {
-            cursor: none !important;
-          }
-          /* Allow system cursor on actual links if the custom one fails */
-          a, button, [role="button"] {
-            cursor: none !important;
-            pointer-events: auto !important;
-          }
+          /* Lenis Essential CSS */
+          html.lenis { height: auto; }
+          .lenis.lenis-smooth { scroll-behavior: auto !important; }
+          .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+          .lenis.lenis-stopped { overflow: hidden; }
+          .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+          /* Scrollbar Styling */
           .custom-scrollbar::-webkit-scrollbar { width: 4px; }
           .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
           .custom-scrollbar::-webkit-scrollbar-thumb { background: #8b5a2b; border-radius: 10px; }
+          
+          /* Ensuring pointer events work correctly */
+          a, button, [role="button"] {
+            pointer-events: auto !important;
+          }
         `}</style>
       </head>
       <body className="min-h-screen bg-[#fdfcf0] pt-6 md:pt-12 pb-24 px-2 md:px-8 font-serif selection:bg-[#ff9a9e] relative text-[#83B2DE] overflow-x-hidden">
@@ -119,6 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          style={{ y: waveEffect }}
           className="relative z-10 w-full max-w-4xl mx-auto border-[3px] border-[#8b5a2b] rounded-[1.5rem] md:rounded-[2rem] shadow-[0px_10px_0px_0px_rgba(139,90,43,0.1)] bg-[#fffdf5] flex flex-col overflow-hidden h-fit mb-10"
         >
           <div className="absolute inset-0 z-0 pointer-events-none" 
@@ -127,7 +165,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="relative z-10 flex flex-col w-full h-full">
             <Header />
 
-            {/* NAV: Added z-50 and relative to ensure it's on top */}
             <nav className="relative z-50 hidden md:flex bg-[#f2ead3] px-6 gap-1 pt-2 border-b-[3px] border-[#8b5a2b] shrink-0">
               {tabs.map((tab) => (
                 <Link key={tab.path} href={tab.path} className="block">
