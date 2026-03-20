@@ -12,6 +12,7 @@ import {
   Sparkles,
   Cloud,
   Sun,
+  MousePointer2
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -59,8 +60,7 @@ export default function Dashboard() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      /* REDUCED SPACE-Y HERE */
-      className="px-4 sm:px-6 md:px-10 py-8 md:py-10 space-y-6 md:space-y-8 max-w-7xl mx-auto relative overflow-hidden"
+      className="px-4 sm:px-6 md:px-10 py-8 md:py-10 space-y-6 md:space-y-12 max-w-7xl mx-auto relative overflow-hidden"
     >
       {/* Background Elements */}
       <motion.div
@@ -211,31 +211,44 @@ export default function Dashboard() {
         </motion.div>
       </div>
 
-      {/* PROJECT PREVIEW SECTION - REDUCED PT-2 */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center pt-2">
-        {/* LIVE IFRAME CARD */}
+      {/* PROJECT PREVIEW SECTION - CLEANED & FIXED GRID */}
+      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
+        {/* LEFT: LIVE IFRAME CARD */}
         <motion.a
-          href="https://pixel-studio-opal.vercel.app/"
+          href="https://honey-haze.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ y: -10, scale: 1.01 }}
-          className="md:col-span-7 relative block group"
+          className="md:col-span-7 relative block group/card"
         >
-          <div className="absolute inset-0 bg-[#8b5a2b] rounded-[3rem] translate-x-4 translate-y-4 opacity-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-all" />
-          <div className="relative aspect-[4/3] sm:aspect-[16/10] bg-white border-[5px] border-[#8b5a2b] rounded-[3rem] p-4 sm:p-5 shadow-2xl overflow-hidden">
-            <div className="w-full h-full bg-[#fdfcf0] rounded-[2rem] border-[4px] border-[#90be6d] border-dashed overflow-hidden relative group-hover:border-solid transition-all">
+          <div className="absolute inset-0 bg-[#8b5a2b] rounded-[2.5rem] translate-x-3 translate-y-3 opacity-10 group-hover/card:translate-x-4 group-hover/card:translate-y-4 transition-transform" />
+          
+          <div className="relative bg-white border-[4px] border-[#8b5a2b] rounded-[2.5rem] p-5 shadow-md overflow-hidden">
+            <div 
+              className="w-full aspect-video bg-[#fdfcf0] rounded-[1.5rem] border-[3px] border-dashed overflow-hidden relative group/iframe shadow-inner transition-all group-hover/card:border-solid"
+              style={{ borderColor: "#FFB347" }}
+            >
               <iframe
-                src="https://pixel-studio-opal.vercel.app/"
-                className="w-[200%] h-[200%] origin-top-left scale-[0.5] border-none pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity"
+                src="https://honey-haze.vercel.app/"
+                title="Honey Haze Live Preview"
+                loading="lazy"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[1280px] h-[720px] origin-top scale-[0.28] md:scale-[0.35] border-none pointer-events-none transition-opacity duration-500 group-hover/card:opacity-80"
               />
-              <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 bg-[#e29494] text-white text-[10px] sm:text-[12px] px-4 py-2 sm:px-8 sm:py-4 rounded-2xl sm:rounded-3xl font-[1000] border-[3px] sm:border-[4px] border-[#a65d5d] uppercase italic tracking-wider shadow-[0_4px_0_0_#a65d5d] sm:shadow-[0_6px_0_0_#a65d5d] flex items-center gap-2 cursor-pointer z-20 transition-all active:translate-y-1 active:shadow-none">
-                Visit Studio <ExternalLink size={12} className="sm:w-[14px] sm:h-[14px]" />
+
+              <motion.div 
+                animate={{ x: ['-100%', '200%'] }}
+                transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none skew-x-12"
+              />
+
+              <div className="absolute bottom-3 right-3 bg-[#FFB347] text-white text-[10px] px-3 py-1.5 rounded-lg font-black uppercase shadow-lg flex items-center gap-2 z-20 transition-transform active:scale-95">
+                <MousePointer2 size={10} /> Visit Live Site
               </div>
             </div>
           </div>
         </motion.a>
 
-        {/* PROJECT INFO + POLISHED BUTTON */}
+        {/* RIGHT: PROJECT INFO */}
         <motion.div variants={floating} initial="initial" animate="animate" className="md:col-span-5">
           <motion.div
             whileHover={{ rotate: 0, scale: 1.02 }}
@@ -245,11 +258,11 @@ export default function Dashboard() {
             
             <div>
               <h4 className="text-2xl sm:text-3xl font-[1000] text-[#5d3d1e] uppercase mb-5 italic flex items-center gap-3">
-                PixelStudio <Cherry className="text-[#ef476f]" />
+                Honey Haze <Cherry className="text-[#ef476f]" />
               </h4>
               <p className="text-sm sm:text-[15px] font-[1000] text-[#5d3d1e]/80 leading-relaxed">
                 My first website testing backend skills and deploying a full-stack
-                project! Built with my fellow friend Nova!
+                project!
               </p>
             </div>
 
@@ -285,7 +298,7 @@ export default function Dashboard() {
                     animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 1] }}
                     transition={{ repeat: Infinity, duration: 2.5 }}
                   >
-                    < Sparkles size={18} className="text-[#f4c2c2]" fill="currentColor" />
+                    <Sparkles size={18} className="text-[#f4c2c2]" fill="currentColor" />
                   </motion.div>
                 </span>
 
