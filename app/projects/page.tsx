@@ -52,12 +52,12 @@ export default function ProjectsPage() {
   const projects = [
     {
       id: 6,
-      title: "SunCart Store",
+      title: "Sun Cart Store",
       description: "A bright, high-performance e-commerce storefront currently under development. Focused on seamless transitions and a sun-kissed aesthetic.",
       tags: ["Next.js", "Tailwind", "Framer Motion"],
       link: "https://suncart-store-wine.vercel.app/", 
       accent: "#f59e0b", 
-      items: ["Storefront - Ongoing", "Payment Flow - Pending", "Inventory Logic - In Progress"],
+      items: ["Storefront - Ongoing", "Cart Logic - Pending", "Responsive Design - In Progress"],
       emoji: "☀️",
       type: "Ongoing Project"
     },

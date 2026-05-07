@@ -11,13 +11,14 @@ const SkillShard = ({ name, level, index }: { name: string; level: string; index
 
   // Theme Colors
   const themeColor = "#8b5a2b";   // Primary Brown
-  const hoverColor = "#e5989b";   // Dusty Rose Pink (Solid)
-  const softPinkBg = "#fff1f2";   // Soft Dusty Pink (Card Surface)
+  const hoverColor = "#e5989b";   // Dusty Rose Pink
+  const softPinkBg = "#fff1f2";   // Soft Dusty Pink
 
   const hoverTerms = ["Blooming...", "Flourishing...", "Nurturing...", "Sprouting..."];
   const currentTerm = hoverTerms[index % hoverTerms.length];
 
   const getLayout = (i: number) => {
+    // Ensuring grid spans are responsive
     const layouts = ["md:col-span-2", "md:col-span-1", "md:col-span-1", "md:col-span-1"];
     return layouts[i % layouts.length];
   };
@@ -32,7 +33,7 @@ const SkillShard = ({ name, level, index }: { name: string; level: string; index
       whileHover={{ y: -5, rotate: index % 2 === 0 ? 1 : -1 }}
       transition={{ delay: index * 0.03, type: "spring", stiffness: 300 }}
       className={`${getLayout(index)} relative group overflow-hidden border-2 border-[#8b5a2b]/20 rounded-[2rem] shadow-lg`}
-      style={{ backgroundColor: softPinkBg }} // Applied Soft Pink to Card BG
+      style={{ backgroundColor: softPinkBg }}
     >
       <div className="p-5 h-full flex flex-col justify-between min-h-[150px]">
         <Sparkles 
@@ -73,7 +74,7 @@ const SkillShard = ({ name, level, index }: { name: string; level: string; index
               animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }}
               className="absolute inset-0 z-20 p-5 flex flex-col justify-center items-center text-center backdrop-blur-md"
-              style={{ backgroundColor: `${hoverColor}f0` }} // Full Pink Hover
+              style={{ backgroundColor: `${hoverColor}f0` }}
             >
               <div className="bg-white/20 p-3 rounded-full mb-2">
                 <Activity size={24} className="text-white" />
@@ -164,7 +165,8 @@ export default function SkillsPage() {
                   className="p-3 rounded-2xl shadow-sm border-2 border-[#8b5a2b]/10 bg-white" 
                   style={{ color: "#8b5a2b" }}
                 >
-                   {React.cloneElement(cat.icon as React.ReactElement, { size: 24 })}
+                   {/* FIXED LINE BELOW: Added <any> to prevent Vercel Build Error */}
+                   {React.cloneElement(cat.icon as React.ReactElement<any>, { size: 24 })}
                 </motion.div>
                 <h2 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-[#5d3d1e]">
                   {cat.title}
