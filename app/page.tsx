@@ -105,7 +105,7 @@ export default function Dashboard() {
               transition={{ repeat: Infinity, duration: 3 }}
               className="bg-[#c45a5a] text-white text-[10px] px-3 py-1 inline-block font-[1000] rounded-md tracking-[0.2em] uppercase border-2 border-white/30 shadow-sm"
             >
-              Artsy | Front-end Dev
+              Artsy | Full-Stack Dev
             </motion.div>
           </div>
 
@@ -132,7 +132,7 @@ export default function Dashboard() {
             >
               <div className="absolute inset-0 bg-[#90be6d]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <p className="relative z-10">
-                I am a Bangladesh-based Frontend Developer specializing in transforming complex Figma designs into high-performance, responsive web experiences. I bridge the gap between creative folk-art aesthetics and modern technical standards.
+                I am a Bangladesh-based Full-Stack Developer specializing in transforming complex Figma designs into high-performance, responsive web experiences. I bridge the gap between creative folk-art aesthetics and modern technical standards.
               </p>
               <motion.div
                 animate={{ rotate: [0, 15, 0] }}

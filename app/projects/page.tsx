@@ -10,7 +10,9 @@ import {
   Sparkles, 
   Users, 
   PawPrint, 
-  ChefHat 
+  ChefHat,
+  Construction,
+  ShoppingCart
 } from 'lucide-react';
 
 const containerVariants: Variants = {
@@ -47,22 +49,25 @@ const tagVariants: Variants = {
 };
 
 export default function ProjectsPage() {
-  /**
-   * HOW TO ADD A NEW PROJECT:
-   * 1. Add a new object {} to the 'projects' array below.
-   * 2. 'id': Ensure it's unique.
-   * 3. 'items': Use the "Title - Status" format. The code splits them at the " - " 
-   * to style the right side (Status) with a red border and the left side (Title) with a dot.
-   * 4. 'accent': Choose a hex color that matches the project's branding.
-   */
   const projects = [
+    {
+      id: 6,
+      title: "SunCart Store",
+      description: "A bright, high-performance e-commerce storefront currently under development. Focused on seamless transitions and a sun-kissed aesthetic.",
+      tags: ["Next.js", "Tailwind", "Framer Motion"],
+      link: "https://suncart-store-wine.vercel.app/", 
+      accent: "#f59e0b", 
+      items: ["Storefront - Ongoing", "Payment Flow - Pending", "Inventory Logic - In Progress"],
+      emoji: "☀️",
+      type: "Ongoing Project"
+    },
     {
       id: 5,
       title: "Chirp Heavens",
       description: "A professional bird shop template featuring a corporate-clean aesthetic. Built for high-conversion with a sophisticated product algorithm.",
       tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
       link: "https://chirp-heaven.vercel.app/",
-      accent: "#4A90E2", // Sky Blue accent
+      accent: "#4A90E2", 
       items: ["Bird Discovery - Product Algorithm", "Order Logistics - Live Tracking", "Functional Nest - Smart Cart"],
       emoji: "🐦",
       type: "Bird Shop Template"
@@ -120,7 +125,6 @@ export default function ProjectsPage() {
       variants={containerVariants}
       className="p-6 md:p-10 space-y-12"
     >
-      {/* SECTION HEADER */}
       <motion.div 
         variants={cardVariants}
         className="flex items-center gap-4 border-b-[3px] border-dashed border-[#8b5a2b] pb-6"
@@ -146,12 +150,11 @@ export default function ProjectsPage() {
             whileHover="hover"
             className="relative group col-span-1"
           >
-            {/* Background Sticker Shadow */}
             <div className="absolute inset-0 bg-[#8b5a2b] rounded-[2.5rem] translate-x-3 translate-y-3 opacity-10 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform" />
             
             <div className="relative bg-white border-[4px] border-[#8b5a2b] rounded-[2.5rem] p-7 shadow-md overflow-hidden h-full flex flex-col">
               
-              {/* LIVE FEED PREVIEW */}
+              {/* LIVE IFRAME FEED - Centered & Animated */}
               <motion.a 
                 href={project.link} 
                 target="_blank" 
@@ -162,27 +165,26 @@ export default function ProjectsPage() {
               >
                 <iframe 
                   src={project.link} 
-                  title={`${project.title} Live Preview`}
-                  className="absolute top-0 left-1/2 -translate-x-1/2 w-[1280px] h-[720px] origin-top scale-[0.25] md:scale-[0.3] border-none pointer-events-none transition-opacity duration-500 group-hover/iframe:opacity-80"
+                  title={`${project.title} Preview`}
+                  className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] origin-top scale-[0.28] md:scale-[0.32] border-none pointer-events-none transition-opacity duration-700 opacity-90 group-hover/iframe:opacity-100"
                   loading="lazy"
                 />
                 
-                {/* Overlay Shimmer */}
+                {/* Overlay Shimmer for Depth */}
                 <motion.div 
                   animate={{ x: ['-100%', '200%'] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none skew-x-12"
+                  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none skew-x-12"
                 />
 
                 <div 
-                  className="absolute bottom-3 right-3 text-white text-[10px] px-3 py-1.5 rounded-lg font-black uppercase shadow-lg flex items-center gap-2"
+                  className="absolute bottom-3 right-3 text-white text-[10px] px-3 py-1.5 rounded-lg font-black uppercase shadow-lg flex items-center gap-2 z-10"
                   style={{ backgroundColor: project.accent }}
                 >
                   <MousePointer2 size={10} /> Visit Live Site
                 </div>
               </motion.a>
 
-              {/* PROJECT TYPE TAG */}
               <div className="flex justify-between items-center mb-4">
                 <motion.div 
                   initial={{ x: -20, opacity: 0 }}
@@ -190,8 +192,7 @@ export default function ProjectsPage() {
                   className="text-white px-4 py-1.5 rounded-full text-[10px] font-black border-[2.5px] border-[#8b5a2b] -rotate-1 shadow-md uppercase flex items-center gap-2"
                   style={{ backgroundColor: project.accent }}
                 >
-                  {/* Dynamic Icon selection based on ID or Type */}
-                  {project.id === 3 ? <Users size={12} /> : (project.id === 2 || project.id === 5) ? <PawPrint size={12} /> : project.id === 4 ? <ChefHat size={12} /> : <Sparkles size={12} />}
+                  {project.id === 6 ? <ShoppingCart size={12} /> : project.id === 3 ? <Users size={12} /> : (project.id === 2 || project.id === 5) ? <PawPrint size={12} /> : project.id === 4 ? <ChefHat size={12} /> : <Sparkles size={12} />}
                   {project.type}
                 </motion.div>
                 <motion.div
@@ -210,7 +211,6 @@ export default function ProjectsPage() {
                 {project.description}
               </p>
 
-              {/* PROJECT MANIFEST */}
               <div className="bg-[#fdfcf0] border-[3px] border-[#8b5a2b] rounded-2xl p-5 mb-6 border-dashed bg-opacity-50">
                 <span className="text-[11px] font-[1000] uppercase text-[#8b5a2b] block mb-3 tracking-[0.1em]">
                   📁 Project Manifest / Status:
@@ -234,7 +234,6 @@ export default function ProjectsPage() {
                 </ul>
               </div>
 
-              {/* TECH STACK & LINK */}
               <div className="mt-auto flex items-center justify-between pt-4 gap-4">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map(tag => (
@@ -264,7 +263,6 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      {/* FOOTER DECORATION */}
       <motion.div 
         variants={cardVariants}
         className="flex justify-center py-10"
